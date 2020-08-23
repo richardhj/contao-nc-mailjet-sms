@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+    <file>
+        <body>
+            <trans-unit id="tl_nc_gateway.type.mailjetsms">
+                <target>Mailjet SMS</target>
+            </trans-unit>
+            <trans-unit id="tl_nc_gateway.mailjetsms_accessToken.0">
+                <target>Mailjet access token</target>
+            </trans-unit>
+            <trans-unit id="tl_nc_gateway.mailjetsms_accessToken.1">
+                <target>Provide the access token from the Mailjet back end.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

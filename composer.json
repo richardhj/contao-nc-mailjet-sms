@@ -1,0 +1,44 @@
+{
+  "name": "richardhj/contao-nc-mailjet-sms",
+  "description": "Mailjet SMS gateway for the notification center in Contao CMS.",
+  "keywords": [
+    "contao",
+    "notification center",
+    "mailjet",
+    "sms"
+  ],
+  "type": "contao-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Richard Henkenjohann",
+      "email": "richardhenkenjohann@googlemail.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/richardhj/contao-nc-mailjet-sms/issues",
+    "source": "https://github.com/richardhj/contao-nc-mailjet-sms"
+  },
+  "require": {
+    "php": "^7.4",
+    "contao/core-bundle": "^4.9",
+    "giggsey/libphonenumber-for-php": "^7.0 || ^8.0",
+    "richardhj/contao-notification_center_checksendinterface": "^1.0",
+    "symfony/http-kernel": "^4.4 || ^5.0",
+    "symfony/http-client": "^4.4. || ^5.0",
+    "terminal42/notification_center": "^1.3.5",
+    "terminal42/service-annotation-bundle": "^1.1"
+  },
+  "require-dev": {
+    "contao/manager-plugin": "^2.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Richardhj\\NotificationCenterMailjetSms\\": "src/"
+    }
+  },
+  "extra": {
+    "contao-manager-plugin": "Richardhj\\NotificationCenterMailjetSms\\ContaoManager\\Plugin"
+  }
+}

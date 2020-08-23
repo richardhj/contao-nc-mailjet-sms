@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+    <file>
+        <body>
+            <trans-unit id="ERR.mailjetsms_invalid_sender">
+                <target>The sender has to be a maximum of 11 characters or 12 digits. Phone numbers start with a
+                    international dialling prefix without "+" oder "00" and without spaces or hyphens.
+                </target>
+            </trans-unit>
+            <trans-unit id="ERR.mailjetsms_draft_unavailable">
+                <target>This notification requires a valid mobile phone number.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
