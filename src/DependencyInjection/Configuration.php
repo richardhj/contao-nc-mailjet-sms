@@ -27,7 +27,7 @@ final class Configuration implements ConfigurationInterface
             ->children()
                 // Do not set the access token in the config but define the environment value if necessary
                 ->scalarNode('access_token')
-                    ->defaultValue('%env(MAILJETSMS_TOKEN)%')
+                    ->defaultValue('%env(default::MAILJETSMS_TOKEN)%')
                 ->end()
             ->end()
         ;
