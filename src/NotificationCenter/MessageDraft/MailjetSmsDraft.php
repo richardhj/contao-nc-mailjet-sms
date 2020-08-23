@@ -39,7 +39,7 @@ class MailjetSmsDraft implements MessageDraftInterface
     public function __construct(MessageModel $messageModel, LanguageModel $languageModel, array $tokens)
     {
         /** @var LoggerInterface $logger */
-        $logger = System::getContainer()->get('logger');
+        $logger = System::getContainer()->get('monolog.logger.contao');
 
         $this->tokens        = $tokens;
         $this->languageModel = $languageModel;

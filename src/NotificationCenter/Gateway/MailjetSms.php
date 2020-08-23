@@ -40,7 +40,7 @@ class MailjetSms extends Base implements GatewayInterface, MessageDraftFactoryIn
     public function __construct(GatewayModel $model)
     {
         /** @var LoggerInterface $logger */
-        $logger = System::getContainer()->get('logger');
+        $logger = System::getContainer()->get('monolog.logger.contao');
 
         parent::__construct($model);
 
@@ -78,13 +78,13 @@ class MailjetSms extends Base implements GatewayInterface, MessageDraftFactoryIn
             return false;
         }
 
-        $client = HttpClient::createForBaseUri('https://api.mailjet.com/v4', ['auth_bearer' => $accessToken]);
+        $client = HttpClient::createForBaseUri('https://api.mailjet.com/v4/', ['auth_bearer' => $accessToken]);
 
         $success = true;
         foreach ($draft->getRecipients() as $recipient) {
             $response = $client->request(
                 'POST',
-                '/sms-send',
+                'sms-send',
                 [
                     'json' => [
                         'From' => $draft->getFrom(),
