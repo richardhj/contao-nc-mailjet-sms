@@ -30,7 +30,6 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 use Richardhj\NotificationCenterMailjetSms\NotificationCenter\MessageDraft\MailjetSmsDraft;
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 
 class MailjetSms extends Base implements GatewayInterface, MessageDraftFactoryInterface, MessageDraftCheckSendInterface
 {
@@ -94,14 +93,13 @@ class MailjetSms extends Base implements GatewayInterface, MessageDraftFactoryIn
                 ]
             );
 
-            try {
-                $response->getContent();
-            } catch (ClientExceptionInterface $e) {
+            $content = $response->toArray(false);
+            if (isset($content['ErrorMessage'])) {
                 $success = false;
 
                 $this->logger->log(
                     LogLevel::ERROR,
-                    sprintf('Error sending SMS: %s', $e->getMessage()),
+                    sprintf('Error sending SMS: %s', $content['ErrorMessage']),
                     ['contao' => new ContaoContext(__METHOD__, TL_ERROR)]
                 );
             }
