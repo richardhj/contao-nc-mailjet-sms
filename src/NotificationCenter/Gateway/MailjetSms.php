@@ -35,15 +35,18 @@ class MailjetSms extends Base implements GatewayInterface, MessageDraftFactoryIn
 {
     protected $objModel;
     private LoggerInterface $logger;
+    private ?string $accessToken;
 
     public function __construct(GatewayModel $model)
     {
         /** @var LoggerInterface $logger */
-        $logger = System::getContainer()->get('monolog.logger.contao');
+        $logger      = System::getContainer()->get('monolog.logger.contao');
+        $accessToken = System::getContainer()->getParameter('mailjet_sms.access_token');
 
         parent::__construct($model);
 
-        $this->logger = $logger;
+        $this->logger      = $logger;
+        $this->accessToken = $accessToken;
     }
 
     public function createDraft(MessageModel $messageModel, array $tokens, $language = '')
@@ -67,9 +70,9 @@ class MailjetSms extends Base implements GatewayInterface, MessageDraftFactoryIn
 
     public function send(MessageModel $message, array $tokens, $language = '')
     {
-        $accessToken = $this->objModel->mailjetsms_accessToken;
-        if (!$accessToken) {
-            throw new \UnexpectedValueException('Please provide an API access token for message ID '.$message->id);
+        $accessToken = $this->getAccessToken();
+        if ('' === $accessToken) {
+            return false;
         }
 
         $draft = $this->createDraft($message, $tokens, $language);
@@ -139,5 +142,10 @@ class MailjetSms extends Base implements GatewayInterface, MessageDraftFactoryIn
         }
 
         return true;
+    }
+
+    private function getAccessToken(): string
+    {
+        return $this->accessToken ?: $this->objModel->mailjetsms_accessToken;
     }
 }

@@ -17,6 +17,7 @@ namespace Richardhj\NotificationCenterMailjetSms\EventListener;
 
 use Contao\CoreBundle\ServiceAnnotation\Callback;
 use Contao\StringUtil;
+use Contao\System;
 use Contao\Validator;
 
 class SaveCallbackListener
@@ -52,7 +53,7 @@ class SaveCallbackListener
      *
      * @return mixed
      */
-    public function onSaveRecipient($value)
+    public function onSaveSmsRecipient($value)
     {
         if ('' !== $value) {
             foreach (StringUtil::trimsplit(',', $value) as $chunk) {
@@ -65,6 +66,49 @@ class SaveCallbackListener
                     throw new \RuntimeException($GLOBALS['TL_LANG']['ERR']['phone']);
                 }
             }
+        }
+
+        return $value;
+    }
+
+    /**
+     * @Callback(table="tl_nc_gateway", target="config.onload")
+     */
+    public function onLoadTable()
+    {
+        if (System::getContainer()->getParameter('mailjet_sms.access_token')) {
+            $GLOBALS['TL_DCA']['tl_nc_gateway']['fields']['mailjetsms_accessToken']['eval']['disabled']  = true;
+            $GLOBALS['TL_DCA']['tl_nc_gateway']['fields']['mailjetsms_accessToken']['eval']['mandatory'] = false;
+        }
+    }
+
+    /**
+     * @Callback(table="tl_nc_gateway", target="fields.mailjetsms_accessToken.load")
+     *
+     * @param mixed $value
+     *
+     * @return mixed
+     */
+    public function onLoadSmsAccessToken($value)
+    {
+        if ($accessToken = System::getContainer()->getParameter('mailjet_sms.access_token')) {
+            return $accessToken;
+        }
+
+        return $value;
+    }
+
+    /**
+     * @Callback(table="tl_nc_gateway", target="fields.mailjetsms_accessToken.save")
+     *
+     * @param mixed $value
+     *
+     * @return mixed
+     */
+    public function onSaveSmsAccessToken($value)
+    {
+        if (System::getContainer()->getParameter('mailjet_sms.access_token')) {
+            return '';
         }
 
         return $value;
