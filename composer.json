@@ -21,7 +21,7 @@
     "source": "https://github.com/richardhj/contao-nc-mailjet-sms"
   },
   "require": {
-    "php": "^7.4",
+    "php": ">=7.4",
     "contao/core-bundle": "^4.9",
     "giggsey/libphonenumber-for-php": "^7.0 || ^8.0",
     "richardhj/contao-notification_center_checksendinterface": "^1.0",
