@@ -2,31 +2,31 @@
 <xliff version="1.1">
     <file>
         <body>
-            <trans-unit id="tl_nc_gateway.sms_sender.0">
+            <trans-unit id="tl_nc_language.sms_sender.0">
                 <target>Absender</target>
             </trans-unit>
-            <trans-unit id="tl_nc_gateway.sms_sender.1">
+            <trans-unit id="tl_nc_language.sms_sender.1">
                 <target>Geben Sie einen Namen oder eine Telefonnummer ein, der als Absender erscheint.</target>
             </trans-unit>
-            <trans-unit id="tl_nc_gateway.sms_recipients.0">
+            <trans-unit id="tl_nc_language.sms_recipients.0">
                 <target>Empfänger</target>
             </trans-unit>
-            <trans-unit id="tl_nc_gateway.sms_recipients.1">
+            <trans-unit id="tl_nc_language.sms_recipients.1">
                 <target>Geben Sie kommagetrennt Telefonnummern der Empfänger ein.</target>
             </trans-unit>
-            <trans-unit id="tl_nc_gateway.sms_recipients_region.0">
+            <trans-unit id="tl_nc_language.sms_recipients_region.0">
                 <target>Fallback-Ländercode der Empfänger</target>
             </trans-unit>
-            <trans-unit id="tl_nc_gateway.sms_recipients_region.1">
+            <trans-unit id="tl_nc_language.sms_recipients_region.1">
                 <target>Wenn eine Telefonnummer ohne Länder-Präfix übergeben wird, wird die Telefonnummer mittels diesem
                     Ländercode internationalisiert. Wenn die Empfänger sicher aus Deutschland kommen, geben Sie 'de'
                     ein. Leerlassen, um die Sprache dieser Nachricht als Fallback zu verwenden.
                 </target>
             </trans-unit>
-            <trans-unit id="tl_nc_gateway.sms_text.0">
+            <trans-unit id="tl_nc_language.sms_text.0">
                 <target>Textinhalt</target>
             </trans-unit>
-            <trans-unit id="tl_nc_gateway.sms_text.1">
+            <trans-unit id="tl_nc_language.sms_text.1">
                 <target>Geben Sie den Textinhalt der SMS ein. Achten Sie dabei auf die Länge.</target>
             </trans-unit>
         </body>
